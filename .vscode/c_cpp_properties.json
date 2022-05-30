@@ -1,0 +1,32 @@
+{
+    "env": {
+        "default_include_path": [
+            "${workspaceFolder}/**"
+        ],
+        "kernel_include" : [
+            "/lib/modules/5.10.103-v7l+/build/include"
+        ]
+    },
+    "configurations": [
+        {
+            "name": "RPi Kernel Driver Dev",
+            "intelliSenseMode": "gcc-arm64",
+            "cStandard": "c99",
+            "includePath": [
+                "${default_include_path}",
+                "${kernel_include}"
+            ],
+            "forcedInclude": [
+                "${kernel_include}/linux/module.h" 
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${kernel_include}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}
