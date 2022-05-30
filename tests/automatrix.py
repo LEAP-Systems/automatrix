@@ -29,14 +29,14 @@ class Automatrix:
         """
         Deactivate and shift in low bits before dereferencing automatrix
         """
-        self.load_pattern(pattern=[8] * 32)  # equivalent to SRCLR
+        self.load_pattern(pattern=[1] * 32)  # equivalent to SRCLR
 
     def load_pattern(self, pattern: List[int]):
         """
         Load the specified automatrix stream data through the spi interface.
         """
         wiringpi.wiringPiSPIDataRW(AutomatrixHardware.SPI_CHANNEL, bytes(pattern.copy()))
-        self._logger.debug("Pattern loaded: %s", bytes(pattern))
+        self._logger.debug("Pattern loaded: %s", bytes(pattern.copy()))
 
     def trigger(self, active: bool):
         """
@@ -57,10 +57,10 @@ class Automatrix:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
     automtx = Automatrix()
+    automtx.disable()
     signal.signal(signal.SIGINT, automtx.release)
     signal.signal(signal.SIGTERM, automtx.release)
     automtx.enable()
-
     while True:
         automtx.trigger(True)
         time.sleep(1)
