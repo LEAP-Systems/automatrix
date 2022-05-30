@@ -3,10 +3,13 @@ INCLUDE := -isystem /lib/modules/`uname -r`/build/include
 CFLAGS  := -O2 -DMODULE -D__KERNEL__ ${WARN} ${INCLUDE}
 CC      := gcc
 
+SOURCE	:= src
+MOD_NAME:= automtx
+
 # running by kernel build system
 ifneq ($(KERNELRELEASE),)
-	$(TARGET)-objs := main.o
-	obj-m := main.o
+	$(TARGET)-objs := $(SOURCE)/$(MOD_NAME).o
+	obj-m := $(SOURCE)/$(MOD_NAME).o
 # running without kernel build system
 else
 	BUILD_SYSTEM_DIR:=/lib/modules/$(shell uname -r)/build
@@ -18,10 +21,10 @@ clean: ## clean kernel module build artefacts
 	make -C $(BUILD_SYSTEM_DIR) M=$(PWD) clean
 
 load: ## load kernel module object
-	insmod ./$(TARGET).ko
+	sudo insmod $(SOURCE)/$(MOD_NAME).ko
 
 unload: ## unload kernel module object
-	rmmod ./$(TARGET).ko
+	sudo rmmod $(SOURCE)/$(MOD_NAME).ko
 
 .PHONY: help	
 help:
