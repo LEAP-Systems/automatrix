@@ -26,7 +26,7 @@ load: ## load kernel module object
 unload: ## unload kernel module object
 	sudo rmmod $(SOURCE)/$(MOD_NAME).ko
 
-.PHONY: help	
+.PHONY: help
 help:
 	@echo Usage:
 	@echo "  make [target]"
