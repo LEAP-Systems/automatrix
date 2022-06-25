@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class AutomatrixHardware:
     TRIGGER = 25
-    ACTIVE_HIGH = True
+    ACTIVE_HIGH = False
     SPI_CHANNEL = 0
     SPI_SPEED = 500000
     # LED re-numbering. Regular LED_idx is placed at the (regular) location
@@ -22,4 +22,4 @@ class AutomatrixHardware:
     # Parallel outputs for the number of shift registers
     PARALLEL_OUT = 8
     # number of shift registers
-    SHIFTERS = MATRIX_DIM**2//PARALLEL_OUT
+    SHIFTERS = MATRIX_DIM**2 // PARALLEL_OUT
