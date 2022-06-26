@@ -3,7 +3,7 @@ class AutomatrixHardware:
     TRIGGER = 25
     ACTIVE_HIGH = False
     SPI_CHANNEL = 0
-    SPI_SPEED = 500000
+    SPI_SPEED = 1000
     # LED re-numbering. Regular LED_idx is placed at the (regular) location
     # of led_map_forward[LED_idx] this is needed due to a hardware decision # of routing the LED to
     # the nearest output of the shift-register

@@ -271,9 +271,10 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
     automtx = Automatrix()
     automtx.configure()
-    for pattern in automtx.dpc.patterns:
-        # load the first pattern into the shift registers
-        automtx.load_pattern(pattern)
-        automtx.enable(False)
-        time.sleep(1)
-        automtx.enable(True)
+    while True:
+        for pattern in automtx.dpc.patterns:
+            # load the first pattern into the shift registers
+            automtx.load_pattern(pattern)
+            automtx.enable(False)
+            time.sleep(1)
+            automtx.enable(True)
