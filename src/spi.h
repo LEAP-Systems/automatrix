@@ -152,6 +152,13 @@ typedef struct spi_t {
   uint32_t dc;          // dma dreq controls
 } spi_t;
 
-void spi_init(uint8_t device);
+typedef struct spi_config_t {
+  uint8_t device;       // spi device number
+  uint8_t speed;        // spi clock speed
+  uint8_t mode;         // polled = 0x1, interrupt = 0x2, dma = 0x3
+} spi_config_t;
+
+void spi_init(spi_config_t *spi_config);
+void spi_transact(uint8_t *tx_buf, size_t buf_size);
 
 #endif // SPI_H_
