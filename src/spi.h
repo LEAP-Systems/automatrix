@@ -52,7 +52,7 @@
  * Writes to SPI_FIFO write data to TX FIFO. TA is cleared by a dma_frame_end 
  * pulse from the DMA controller.
  */
-#define SPI_CS_TA(x)            ((x) << 7)
+#define SPI_CS_TA               (1 << 7)
 #define SPI_CS_CSPOL(x)         ((x) << 6)  // Chip select polarity: 0 - Active Low | 1 - Active High
 /**
  * @brief FIFO Clear [2 bits]
@@ -154,11 +154,11 @@ typedef struct spi_t {
 
 typedef struct spi_config_t {
   uint8_t device;       // spi device number
-  uint8_t speed;        // spi clock speed
   uint8_t mode;         // polled = 0x1, interrupt = 0x2, dma = 0x3
+  uint64_t speed;       // spi clock speed
 } spi_config_t;
 
-void spi_init(spi_config_t *spi_config);
-void spi_transact(uint8_t *tx_buf, size_t buf_size);
+void spi_init(const spi_config_t *spi_config);
+void spi_transact(const uint8_t *tx_buf, size_t buf_size);
 
 #endif // SPI_H_
