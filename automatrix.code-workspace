@@ -110,7 +110,8 @@
             "mman.h": "c",
             "stdlib.h": "c",
             "stdint.h": "c",
-            "spi.h": "c"
+            "spi.h": "c",
+            "unistd.h": "c"
         }
     }
 }

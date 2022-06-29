@@ -3,7 +3,7 @@
         "default_include_path": [
             "${workspaceFolder}/**"
         ],
-        "kernel_include" : [
+        "kernel_include": [
             "/lib/modules/5.10.103-v7l+/build/include"
         ]
     },
@@ -17,7 +17,7 @@
                 "${kernel_include}"
             ],
             "forcedInclude": [
-                "${kernel_include}/linux/module.h" 
+                "${kernel_include}/linux/module.h"
             ],
             "browse": {
                 "path": [
@@ -25,7 +25,8 @@
                     "${kernel_include}"
                 ],
                 "limitSymbolsToIncludedHeaders": true
-            }
+            },
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4
